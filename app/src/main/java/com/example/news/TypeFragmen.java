@@ -30,10 +30,12 @@ public class TypeFragmen extends Fragment {
     public static List typenames=new ArrayList();
     private ListView listview;
     public static ArrayAdapter adapter;
+    public static Button back;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.type,container,false);
+        back=(Button)view.findViewById(R.id.back);
         listview=(ListView)view.findViewById(R.id.type_listview);
         adapter=new ArrayAdapter(getContext(),R.layout.listview_item,typenames);
         listview.setAdapter(adapter);
