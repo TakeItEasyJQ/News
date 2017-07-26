@@ -8,7 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.news.Class.Type;
 import com.example.news.Utility.HttpRequest;
 
 import org.json.JSONArray;
@@ -17,13 +19,14 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    private DrawerLayout drawerlayout;
+    public static DrawerLayout drawerlayout;
     private Button home;
     private TextView title;
     private JSONObject jsonObject;
     private JSONObject jsonObject1;
     private JSONArray jsonArray;
     private String name;
+    private String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,20 +44,23 @@ public class MainActivity extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TypeFragmen.typenames.size()<14||hasSamename()){
-                    TypeFragmen.typenames.clear();
+                if (TypeFragmen.typeList.size()<13||hasSamename()){
+                    TypeFragmen.typeList.clear();
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             try{
-                                Log.d(TAG, "run: "+"请求了！！！！！！！！！！！！！！！！！！！！！！");
                                 jsonObject=new JSONObject(HttpRequest.HttpRequest(Config.request_type,null,null));
                                 jsonObject1=jsonObject.getJSONObject(Config.ACTION_showapi_res_body);
                                 jsonArray=jsonObject1.getJSONArray(Config.ACTION_channelList);
                                 for (int i=0;i<14;i++){
                                     JSONObject object=jsonArray.getJSONObject(i);
                                     name=object.getString("name");
-                                    TypeFragmen.typenames.add(name);
+                                    id=object.getString("channelId");
+                                    Type type=new Type();
+                                    type.setName(name);
+                                    type.setId(id);
+                                    TypeFragmen.typeList.add(type);
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
@@ -72,11 +78,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    public  void showContent(){
+        ContentFragment.adapter.notifyDataSetChanged();
+        Toast.makeText(this, String.valueOf(ContentFragment.contentList.size()),Toast.LENGTH_SHORT).show();
+    }
     public static boolean hasSamename(){
-        if (TypeFragmen.typenames!=null){
-            for (int i=0;i<TypeFragmen.typenames.size();i++){
-                for (int j=0;j<TypeFragmen.typenames.size()-1;j++){
-                    if (!TypeFragmen.typenames.get(i).equals(TypeFragmen.typenames.get(j+1))){
+        if (TypeFragmen.typeList!=null){
+            for (int i=0;i<TypeFragmen.typeList.size();i++){
+                for (int j=0;j<TypeFragmen.typeList.size()-1;j++){
+                    if (!TypeFragmen.typeList.get(i).equals(TypeFragmen.typeList.get(j+1))){
                         j++;
                     }else {
                         return true;

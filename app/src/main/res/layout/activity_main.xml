@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/refresh_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerlayout"
-   android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:orientation="vertical"
-        android:background="#ffffff"
+    <android.support.v4.widget.DrawerLayout
+
+        android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-       <include layout="@layout/main_title"/>
-        <FrameLayout
-            android:id="@+id/framelayout"
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        </FrameLayout>
-    </LinearLayout>
-    <fragment
-        android:id="@+id/type_fragment"
-        android:name="com.example.news.TypeFragmen"
-        android:layout_gravity="start"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            <include layout="@layout/main_title"/>
+            <fragment
+                android:id="@+id/cont_fragment"
+                android:name="com.example.news.ContentFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </fragment>
+        </LinearLayout>
+        <fragment
+            android:id="@+id/type_fragment"
+            android:name="com.example.news.TypeFragmen"
+            android:layout_gravity="start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-</android.support.v4.widget.DrawerLayout>
+    </android.support.v4.widget.DrawerLayout>
 
+
+
+</android.support.v4.widget.SwipeRefreshLayout>
 

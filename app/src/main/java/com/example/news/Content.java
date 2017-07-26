@@ -10,6 +10,15 @@ public class Content {
     private String picUrl;
     private String shortContent;
     private String linkUrl;
+    private String source;
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     public boolean isHasPic() {
         return hasPic;

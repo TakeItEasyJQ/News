@@ -15,6 +15,17 @@ public  class Config {
     public static final String ACTION_showapi_res_body="showapi_res_body";
     public static final String ACTION_pagebean="pagebean";
     public static final String ACTION_channelList="channelList";
+    public static final String ACTION_contentlist="contentlist";
+
+    public static final String ACTION_havePic="havePic";
+    public static final String ACTION_pubDate="pubDate";
+    public static final String ACTION_title="title";
+    public static final String ACTION_imageurls="imageurls";
+    public static final String ACTION_imageUrl="url";
+    public static final String ACTION_desc="desc";
+    public static final String ACTION_source="source";
+    public static final String ACTION_link="link";
+
 
     public static final String request_type="http://route.showapi.com/109-34?showapi_appid=42782&showapi_sign=52a2947e2dca4d978511626e9d3ec8d4";
     public static final String request_news="http://route.showapi.com/109-35?showapi_appid=42782&showapi_sign=52a2947e2dca4d978511626e9d3ec8d4";
