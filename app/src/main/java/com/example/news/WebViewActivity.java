@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -19,6 +20,8 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web_view);
         webView=(WebView)findViewById(R.id.content_webview);
         final String LinkUrl=getIntent().getStringExtra("link");
+        WebSettings settings=webView.getSettings();
+        settings.setBuiltInZoomControls(true);
         webView.loadUrl(LinkUrl);
         webView.setWebViewClient(new WebViewClient(){
             @Override

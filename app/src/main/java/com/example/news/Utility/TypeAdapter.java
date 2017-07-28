@@ -12,6 +12,7 @@ import com.example.news.Class.Type;
 import com.example.news.R;
 import com.example.news.TypeFragmen;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,17 +20,19 @@ import java.util.List;
  */
 
 public class TypeAdapter extends ArrayAdapter {
+    private List<Type> types=new ArrayList<>();
     private int resouceId;
     public TypeAdapter(Context context, int resource, List objects) {
         super(context, resource, objects);
         this.resouceId=resource;
+        this.types=(List<Type>)objects;
     }
 
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view= LayoutInflater.from(getContext()).inflate(resouceId,parent,false);
-        Type type= TypeFragmen.typeList.get(position);
+        Type type= types.get(position);
         TextView typename=(TextView)view.findViewById(R.id.type_name);
         typename.setText(type.getName());
         return view;

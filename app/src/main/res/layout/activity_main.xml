@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
-    android:id="@+id/refresh_layout"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <android.support.v4.widget.DrawerLayout
 
+    <android.support.v4.widget.DrawerLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -17,12 +13,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <include layout="@layout/main_title"/>
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/refresh_layout"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <fragment
                 android:id="@+id/cont_fragment"
                 android:name="com.example.news.ContentFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </fragment>
+            </android.support.v4.widget.SwipeRefreshLayout>
         </LinearLayout>
         <fragment
             android:id="@+id/type_fragment"
@@ -35,5 +39,5 @@
 
 
 
-</android.support.v4.widget.SwipeRefreshLayout>
+
 

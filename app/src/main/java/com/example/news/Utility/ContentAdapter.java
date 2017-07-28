@@ -14,6 +14,7 @@ import com.example.news.Content;
 import com.example.news.ContentFragment;
 import com.example.news.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,18 +22,20 @@ import java.util.List;
  */
 
 public class ContentAdapter extends ArrayAdapter {
-
+    public List<Content> adptercontents=new ArrayList<>();
     private int resourceId;
     public ContentAdapter(Context context, int resource, List objects) {
         super(context, resource, objects);
         this.resourceId=resource;
+        adptercontents=(List<Content>)objects;
 
     }
 
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Content cont= ContentFragment.contentList.get(position);
+//        Content cont= ContentFragment.contentList.get(position);
+        Content cont= adptercontents.get(position);
         View view= LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
         TextView title=(TextView)view.findViewById(R.id.cont_title);
         ImageView pic=(ImageView)view.findViewById(R.id.cont_img);
